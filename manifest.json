@@ -1,0 +1,20 @@
+{
+  "short_name": "UNICORN",
+  "name": "UNICORN Launch Pack",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#E4C465",
+  "background_color": "#FFFFFF"
+}
