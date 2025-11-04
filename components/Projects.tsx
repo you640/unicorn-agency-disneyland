@@ -3,21 +3,21 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ShowcaseCard, ShowcaseItemProps } from './ShowcaseCard';
 
-const getProjectOneData = (t: (key: any) => string): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
+const getProjectOneData = (t: typeof useLanguage extends () => { t: infer T } ? T : never): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
   title: t('project1Title'),
   description: t('project1Desc'),
   imageUrl: t('project1ImageUrl'),
   tags: t('project1Tags').split(','),
 });
 
-const getProjectTwoData = (t: (key: any) => string): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
+const getProjectTwoData = (t: typeof useLanguage extends () => { t: infer T } ? T : never): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
   title: t('project2Title'),
   description: t('project2Desc'),
   imageUrl: t('project2ImageUrl'),
   tags: t('project2Tags').split(','),
 });
 
-const getProjectThreeData = (t: (key: any) => string): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
+const getProjectThreeData = (t: typeof useLanguage extends () => { t: infer T } ? T : never): Omit<ShowcaseItemProps, 'ariaLabel'> => ({
   title: t('project3Title'),
   description: t('project3Desc'),
   imageUrl: t('project3ImageUrl'),

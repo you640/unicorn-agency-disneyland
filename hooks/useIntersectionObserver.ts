@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject, useMemo } from 'react';
+import { useState, useEffect, useRef, RefObject } from 'react';
 
 interface IntersectionObserverOptions {
   root?: Element | null;
@@ -10,12 +10,10 @@ export const useIntersectionObserver = (options: IntersectionObserverOptions): {
   const [isIntersecting, setIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const memoizedOptions = useMemo(() => options, [options.root, options.rootMargin, JSON.stringify(options.threshold)]);
-
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setIntersecting(entry.isIntersecting);
-    }, memoizedOptions);
+    }, options);
 
     const currentRef = ref.current;
     if (currentRef) {
@@ -27,7 +25,7 @@ export const useIntersectionObserver = (options: IntersectionObserverOptions): {
         observer.unobserve(currentRef);
       }
     };
-  }, [ref, memoizedOptions]);
+  }, [ref, options]);
 
   return { ref, isIntersecting };
 };

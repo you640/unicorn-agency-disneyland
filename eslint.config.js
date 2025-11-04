@@ -6,28 +6,28 @@ import reactPlugin from "eslint-plugin-react";
 import hooksPlugin from "eslint-plugin-react-hooks";
 
 /**
- * Custom ESLint rule to forbid strings containing "public/assets/".
+ * Custom ESLint rule to forbid asset paths that start s '/assets/'.
  * This rule is auto-fixable.
  */
 const noPublicAssetsPathRule = {
   meta: {
     type: 'problem',
     docs: {
-      description: "Disallow asset paths that incorrectly start with 'public/assets/'. Use '/assets/...' instead.",
+  description: "Disallow asset paths that incorrectly start with '/assets/'.",
       recommended: true,
     },
     messages: {
-      noPublicInPath: "Nepoužívaj 'public' v URL cestách. Použi '/assets/...'.",
+      noPublicInPath: "Použi '/assets/...' v URL cestách.",
     },
     fixable: 'code',
     schema: [],
   },
   create(context) {
-    const forbiddenSubstring = 'public/assets/';
-    const forbiddenPattern = /public\/assets\//g;
+  const forbiddenSubstring = '/assets/';
+  const forbiddenPattern = /\/assets\//g;
 
     function checkAndReport(node) {
-      // Handles simple string literals: "public/assets/image.png"
+  // Example: '/assets/image.png' or `/assets/${path}`
       if (node.type === 'Literal' && typeof node.value === 'string' && node.value.includes(forbiddenSubstring)) {
         context.report({
           node,
@@ -39,7 +39,6 @@ const noPublicAssetsPathRule = {
         });
       }
       
-      // Handles template literals (for dynamic paths): `public/assets/${path}`
       if (node.type === 'TemplateElement' && node.value.raw.includes(forbiddenSubstring)) {
         context.report({
           node,

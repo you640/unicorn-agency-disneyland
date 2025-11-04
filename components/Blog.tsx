@@ -3,7 +3,7 @@ import { ContentCard, ContentCardProps } from './ContentCard';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const getBlogData = (t: (key: any) => string): Omit<ContentCardProps, 'ariaLabel'>[] => [
+const getBlogData = (t: typeof useLanguage extends () => { t: infer T } ? T : never): Omit<ContentCardProps, 'ariaLabel'>[] => [
   {
     title: t('visionCard1Title'),
     description: t('visionCard1Desc'),

@@ -3,7 +3,7 @@ import { ContentCard, ContentCardProps } from './ContentCard'; // Changed from S
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const getShowcaseData = (t: (key: any) => string): Omit<ContentCardProps, 'ariaLabel'>[] => [ // Using ContentCardProps
+const getShowcaseData = (t: typeof useLanguage extends () => { t: infer T } ? T : never): Omit<ContentCardProps, 'ariaLabel'>[] => [ // Using ContentCardProps
   {
     title: t('showcaseCard1Title'),
     description: t('showcaseCard1Desc'),
