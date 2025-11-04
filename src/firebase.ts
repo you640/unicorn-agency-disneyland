@@ -1,7 +1,5 @@
 
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -29,11 +27,9 @@ export const initAnalytics = () => {
   }
 };
 
-// Firestore DB
-export const db = getFirestore(app);
+
 // Auth
 export const auth = getAuth(app);
-// Storage
-export const storage = getStorage(app);
+export const googleProvider = new GoogleAuthProvider();
 
 export { app };

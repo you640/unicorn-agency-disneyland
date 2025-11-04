@@ -1,19 +1,7 @@
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "./firebase";
 import { sendDiscordMessage } from "./discord";
 
 export async function logEvent(type: string, data: Record<string, unknown> = {}) {
-  try {
-    await addDoc(collection(db, "logs"), {
-      type,
-      data,
-      createdAt: serverTimestamp(),
-    });
-  } catch (err) {
-    console.error("[Logger] Firestore log failed", err);
-  }
-
-  // Discord je len bonus
+  // Logovanie len na Discord
   try {
     await sendDiscordMessage(`📢 [${type}] ${data?.message || ""}`, {
       title: `Log: ${type}`,

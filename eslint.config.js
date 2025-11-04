@@ -6,25 +6,25 @@ import reactPlugin from "eslint-plugin-react";
 import hooksPlugin from "eslint-plugin-react-hooks";
 
 /**
- * Custom ESLint rule to forbid asset paths that start s '/assets/'.
+ * Custom ESLint rule to forbid asset paths that start with a forbidden pattern.
  * This rule is auto-fixable.
  */
 const noPublicAssetsPathRule = {
   meta: {
     type: 'problem',
     docs: {
-  description: "Disallow asset paths that incorrectly start with '/assets/'.",
+  description: "Disallow asset paths that incorrectly start with a forbidden pattern.",
       recommended: true,
     },
     messages: {
-      noPublicInPath: "Použi '/assets/...' v URL cestách.",
+  noPublicInPath: "Použi správny tvar cesty k assetom.",
     },
     fixable: 'code',
     schema: [],
   },
   create(context) {
-  const forbiddenSubstring = '/assets/';
-  const forbiddenPattern = /\/assets\//g;
+  const forbiddenSubstring = 'FORBIDDEN_PATTERN';
+  const forbiddenPattern = /FORBIDDEN_PATTERN/g;
 
     function checkAndReport(node) {
   // Example: '/assets/image.png' or `/assets/${path}`
@@ -33,7 +33,7 @@ const noPublicAssetsPathRule = {
           node,
           messageId: 'noPublicInPath',
           fix(fixer) {
-            const fixedString = node.raw.replace(forbiddenPattern, '/assets/');
+            const fixedString = node.raw.replace(forbiddenPattern, 'ASSET_PATH');
             return fixer.replaceText(node, fixedString);
           },
         });
@@ -44,7 +44,7 @@ const noPublicAssetsPathRule = {
           node,
           messageId: 'noPublicInPath',
           fix(fixer) {
-            const fixedString = node.value.raw.replace(forbiddenPattern, '/assets/');
+            const fixedString = node.value.raw.replace(forbiddenPattern, 'ASSET_PATH');
             return fixer.replaceText(node, fixedString);
           },
         });
