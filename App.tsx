@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 import BackToTopButton from './components/BackToTopButton';
 
+import DiscordTest from './src/DiscordTest';
+
 // Skeletons for lazy loading
 import AboutSkeleton from './components/skeletons/AboutSkeleton';
 import ServicesSkeleton from './components/skeletons/ServicesSkeleton';
@@ -29,7 +31,7 @@ const Projects = React.lazy(() => import('./components/Projects')); // New unifi
 
 
 const App: React.FC = () => {
-    useEffect(() => {
+  useEffect(() => {
     if (window.location.hash) {
       const id = window.location.hash.substring(1);
       setTimeout(() => {
@@ -43,6 +45,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <DiscordTest />
       <Header />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Hero />

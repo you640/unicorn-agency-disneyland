@@ -6,8 +6,19 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
       server: {
-        port: 3000,
+        port: 5151,
         host: '0.0.0.0',
+        middlewareMode: false,
+        fs: {
+          strict: true,
+        },
+        hmr: {
+          overlay: false
+        },
+        watch: {
+          usePolling: true
+        },
+        cache: false
       },
       plugins: [react()],
       define: {

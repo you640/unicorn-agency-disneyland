@@ -9,7 +9,9 @@
     <title>UNICORN Launch Pack</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#E4C465">
+  <meta name="theme-color" content="#E4C465">
+  <meta name="msapplication-TileColor" content="#E4C465">
+  <meta name="msapplication-TileImage" content="/icons/icon-192x192.png">
     <style>
       html {
         scroll-behavior: smooth;
@@ -142,6 +144,7 @@
            font-size: 24pt;
            background: none !important;
            -webkit-print-color-adjust: exact;
+           print-color-adjust: exact;
         }
         
         #investors h2 span { /* Target potential spans inside */
@@ -165,8 +168,8 @@
         }
 
         #investors svg {
-           print-color-adjust: exact;
            -webkit-print-color-adjust: exact;
+           print-color-adjust: exact;
         }
       }
     </style>

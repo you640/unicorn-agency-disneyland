@@ -145,4 +145,12 @@ self.addEventListener('fetch', event => {
       }
     )
   );
+
+  // Fallback strategy: return a placeholder response if the network fails
+  event.respondWith(
+    fetch(event.request).catch(() => {
+      // Môžeš vrátiť fallback, alebo len ignorovať chybu
+      return new Response('', { status: 200, statusText: 'Offline fallback' });
+    })
+  );
 });

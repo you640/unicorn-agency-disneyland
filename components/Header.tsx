@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -108,21 +109,23 @@ const Header: React.FC = () => {
             >
               {language.toUpperCase()}
             </button>
+            <ThemeSwitcher />
           </div>
           <div className="md:hidden flex items-center">
-             <button
+            <button
               onClick={toggleLanguage}
               className="mr-2 p-2 font-bold text-sm border-2 border-[var(--c-near-black)] text-[var(--c-near-black)] hover:bg-[var(--c-near-black)] hover:text-[var(--c-surface-1)] transition-all"
               aria-label={`Switch to ${language === 'sk' ? 'English' : 'Slovak'}`}
             >
               {language.toUpperCase()}
             </button>
+            <ThemeSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
               className="inline-flex items-center justify-center p-2.5 rounded-md text-[var(--c-near-black)] hover:text-[var(--c-charcoal)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
-              aria-expanded={isOpen}
+              aria-expanded={!!isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (

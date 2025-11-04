@@ -1,3 +1,11 @@
+# Ignoruj všetky secrets a env
+.env
+.env.local
+.env.*
+# Secrets & env
+.env
+.env.local
+.env.*
 # Logs
 logs
 *.log

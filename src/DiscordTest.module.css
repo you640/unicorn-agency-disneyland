@@ -1,0 +1,9 @@
+.discord-panel {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+.discord-input {
+  width: 100%;
+  margin-bottom: 8px;
+}
