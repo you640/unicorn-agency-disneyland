@@ -9,6 +9,9 @@ export default defineConfig({
   // or when opened directly via the file:// protocol, which is useful for some
   // development environments and previews.
   base: '',
+    server: {
+      port: 5151,
+    },
   test: {
     globals: true,
     environment: 'jsdom',

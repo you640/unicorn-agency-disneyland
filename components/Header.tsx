@@ -125,7 +125,7 @@ const Header: React.FC = () => {
               type="button"
               className="inline-flex items-center justify-center p-2.5 rounded-md text-[var(--c-near-black)] hover:text-[var(--c-charcoal)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
-              aria-expanded={!!isOpen}
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
