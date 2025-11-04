@@ -43,10 +43,12 @@ const App: React.FC = () => {
     }
   }, []);
 
-  return (
-    <>
-      <DiscordTest />
-      <Header />
+    const showDiscordTest = import.meta.env.VITE_SHOW_DISCORD_TEST === 'true';
+    return (
+      <>
+        {/* ...ostatný obsah... */}
+        {showDiscordTest && <DiscordTest />}
+        <Header />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Hero />
         <Suspense fallback={<AboutSkeleton />}>
